@@ -4,37 +4,32 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Awesome Books</title>
-    <script defer src="main.js"></script>
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=Ubuntu:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <title>Awesome Library</title>
   </head>
   <body>
-    <header class="header">
-      <nav class="main-nav"></nav>
-    </header>
-    <main class="hero">
-      <section class="title-section">
-        <h1 class="title">Awesome books</h1>
-      </section>
-      <section class="books-section">
-        <!-- Books are loaded dynamically with JavaScript -->
-      </section>
-      <section class="form-section">
-        <form class="form">
-          <input
-            type="text"
-            class="input-fields"
-            id="input-title"
-            placeholder="Title"
-          /><br /><br />
-          <input
-            type="text"
-            class="input-fields"
-            id="input-author"
-            placeholder="Author"
-          /><br /><br />
-          <button type="reset" id="addBtn" onclick="capturar();">Add</button>
-        </form>
-      </section>
+    <main class="main-Container">
+        <section class="all-books">
+          <h1>All Awesome Books</h1>
+          <div class="listShow"></div>
+        </section>
+        <hr class="horizontal-line1">
+        <section class="add-books">
+            <h2 class="add-title">Add a New Book</h1>
+            <div class="input-book">
+              <form action="#">
+                <input type="text" class="title" placeholder="Title" required>
+                <input type="text" class="author" placeholder="Author" required>
+                <input type="button" class="add" value="Add">
+              </form>
+            </div>
+        </section>
     </main>
+
+    <script src="main.js"></script>
   </body>
 </html>
