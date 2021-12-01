@@ -12,24 +12,33 @@
     <title>Awesome Library</title>
   </head>
   <body>
-    <main class="main-Container">
-        <section class="all-books">
-          <h1>All Awesome Books</h1>
-          <div class="listShow"></div>
-        </section>
-        <hr class="horizontal-line1">
-        <section class="add-books">
-            <h2 class="add-title">Add a New Book</h2>
-            <div class="input-book">
-              <form action="#">
-                <input type="text" class="title" placeholder="Title" required>
-                <input type="text" class="author" placeholder="Author" required>
-                <input type="button" class="add" value="Add">
-              </form>
-            </div>
-        </section>
+    <header class="header">
+      <nav class="main-nav"></nav>
+    </header>
+    <main class="hero">
+      <section class="title-section">
+        <h1 class="title">Awesome books</h1>
+      </section>
+      <section class="books-section">
+        <!-- Books are loaded dynamically with JavaScript -->
+      </section>
+      <section class="form-section">
+        <form class="form">
+          <input
+            type="text"
+            class="input-fields"
+            id="input-title"
+            placeholder="Title"
+          /><br /><br />
+          <input
+            type="text"
+            class="input-fields"
+            id="input-author"
+            placeholder="Author"
+          /><br /><br />
+          <button type="submit" id="addBtn">Add</button>
+        </form>
+      </section>
     </main>
-
-    <script src="main.js"></script>
   </body>
 </html>
