@@ -1,76 +1,85 @@
-let bookList = [];
+const form = document.querySelector('.form');
+const titleInput = document.querySelector('#input-title');
+const authorInput = document.querySelector('#input-author');
 
-const saveDataLocally = (bookList) => {
-  const stringifiedBookList = JSON.stringify(bookList);
-  localStorage.setItem('bookList', stringifiedBookList);
-};
+class Book {
+  constructor(title = null, author = null) {
+    this.title = title;
+    this.author = author;
+    this.books = [];
+    this.bookShelf = document.querySelector('.books-section');
+  }
 
-const removeBook = (index) => {
-  bookList = bookList.filter((book, ind) => ind !== index);
-};
+  generateRandomId = () => Math.random().toString(20).substr(2, 20);
 
-const listShowContainer = document.querySelector('.listShow');
+  getExistingBooks = () => JSON.parse(localStorage.getItem('books'));
 
-const generateBooks = () => {
-  listShowContainer.innerHTML = '';
+  saveToLocalStorage = (books) => {
+    localStorage.setItem('books', JSON.stringify(books));
+  };
 
-  bookList.reverse().forEach((bookObject, index) => {
-    const div = document.createElement('div');
-    div.className = 'book';
+  addBooks() {
+    const newBook = {
+      title: this.title,
+      author: this.author,
+      id: this.generateRandomId(),
+    };
 
-    const titleSpan = document.createElement('span');
-    titleSpan.className = 'book-title';
-    titleSpan.textContent = bookObject.title;
-    div.appendChild(titleSpan);
+    if (this.getExistingBooks()) {
+      this.getExistingBooks().forEach((existingBook) => {
+        this.books.push(existingBook);
+      });
+    }
 
-    const br = document.createElement('br');
-    div.appendChild(br);
+    this.books.push(newBook);
 
-    const authorSpan = document.createElement('span');
-    authorSpan.className = 'book-author';
-    authorSpan.textContent = bookObject.author;
-    div.appendChild(authorSpan);
-    const br2 = document.createElement('br');
-    div.appendChild(br2);
+    this.saveToLocalStorage(this.books);
+    this.books = [];
+  }
 
-    const removeButton = document.createElement('button');
-    removeButton.className = 'remove-button';
-    removeButton.textContent = 'Remove';
-    removeButton.addEventListener('click', () => {
-      removeBook(index);
-      saveDataLocally(bookList);
-      generateBooks();
-    });
-    div.appendChild(removeButton);
+  removeBook(bookId) {
+    const filterBooks = this.getExistingBooks().filter(
+      (existingBook) => existingBook.id !== bookId,
+    );
 
-    const hr = document.createElement('hr');
-    hr.className = 'rule';
-    div.appendChild(hr);
+    this.saveToLocalStorage(filterBooks);
+    window.location.reload();
+  }
 
-    listShowContainer.appendChild(div);
-  });
-};
+  displayBooks() {
+    if (this.getExistingBooks()) {
+      this.getExistingBooks().forEach((book) => {
+        const textHtml = `
+        <div class="book">
+        <p class="title">${book.title}</p>
+        <p class="author">${book.author}</p>
+        <button class="remove-btn" data-id=${book.id}>Remove</button>
+        <hr class="bottom-border" />
+        </div>`;
 
-if (localStorage.getItem('bookList') !== null) {
-  const localBookList = localStorage.getItem('bookList');
-  const convertedBookList = JSON.parse(localBookList);
-  bookList = convertedBookList;
-  generateBooks();
-} else {
-  generateBooks();
+        this.bookShelf.insertAdjacentHTML('afterbegin', textHtml);
+      });
+    }
+  }
 }
 
-const addNewBook = (bookList) => {
-  const title = document.querySelector('.title').value;
-  const author = document.querySelector('.author').value;
-  const book = {
-    title,
-    author,
-  };
-  bookList.push(book);
-  saveDataLocally(bookList);
-  generateBooks();
-};
+const book = new Book();
 
-const addButton = document.querySelector('.add');
-addButton.addEventListener('click', () => addNewBook(bookList));
+book.displayBooks();
+
+form.addEventListener('submit', (e) => {
+  if (titleInput.value !== '' && authorInput.value !== '') {
+    const book = new Book(titleInput.value, authorInput.value);
+    book.addBooks();
+    titleInput.value = '';
+    authorInput.value = '';
+  } else {
+    e.preventDefault();
+    alert('You need to provide valid input for book title and author.');
+  }
+});
+
+// traverse through the remove buttons and add onclick event listeners
+Array.from(document.querySelectorAll('.remove-btn')).forEach((btn) => btn.addEventListener('click', () => {
+  book.removeBook(btn.dataset.id);
+}));
