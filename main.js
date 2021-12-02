@@ -2,7 +2,7 @@ const form = document.querySelector('.form');
 const titleInput = document.querySelector('#input-title');
 const authorInput = document.querySelector('#input-author');
 
-class Book { // This is the constructor 
+class Book { 
   constructor(title = null, author = null) {
     this.title = title;
     this.author = author;
@@ -11,12 +11,11 @@ class Book { // This is the constructor
   }
 
   generateRandomId = () => Math.random().toString(20).substr(2, 20);
-
   getExistingBooks = () => JSON.parse(localStorage.getItem('books'));
 
   saveToLocalStorage = (books) => {
     localStorage.setItem('books', JSON.stringify(books));
-  };// Adding books 
+  };
   addBooks() {
     const newBook = {
       title: this.title,
@@ -28,11 +27,11 @@ class Book { // This is the constructor
       this.getExistingBooks().forEach((existingBook) => {
         this.books.push(existingBook);
       });
-    }// saving in local storage and pushing into array
+    }
     this.books.push(newBook);
     this.saveToLocalStorage(this.books);
     this.books = [];
-  }// removing book with filter function
+  }
   removeBook(bookId) {
     const filterBooks = this.getExistingBooks().filter(
       (existingBook) => existingBook.id !== bookId,
@@ -40,7 +39,7 @@ class Book { // This is the constructor
 
     this.saveToLocalStorage(filterBooks);
     window.location.reload();
-  }// showing the books in the web html
+  }
   displayBooks() {
     if (this.getExistingBooks()) {
       this.getExistingBooks().forEach((book) => {
@@ -60,7 +59,7 @@ class Book { // This is the constructor
 
 const book = new Book();
 
-book.displayBooks();// checking if the values are empty
+book.displayBooks();
 form.addEventListener('submit', (e) => {
   if (titleInput.value !== '' && authorInput.value !== '') {
     const book = new Book(titleInput.value, authorInput.value);
@@ -71,7 +70,7 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     alert('You need to provide valid input for book title and author.');
   }
-});// traverse through the remove buttons and add onclick event listeners
+});
 Array.from(document.querySelectorAll('.remove-btn')).forEach((btn) => btn.addEventListener('click', () => {
   book.removeBook(btn.dataset.id);
 }));
