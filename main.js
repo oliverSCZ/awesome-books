@@ -1,7 +1,7 @@
 const form = document.querySelector('.form');
 const titleInput = document.querySelector('#input-title');
 const authorInput = document.querySelector('#input-author');
-class Book { 
+class Book {
   constructor(title = null, author = null) {
     this.title = title;
     this.author = author;
@@ -10,6 +10,7 @@ class Book {
   }
 
   generateRandomId = () => Math.random().toString(20).substr(2, 20);
+
   getExistingBooks = () => JSON.parse(localStorage.getItem('books'));
 
   saveToLocalStorage = (books) => {
@@ -41,7 +42,7 @@ class Book {
     this.saveToLocalStorage(filterBooks);
     window.location.reload();
   }
-  
+
   displayBooks() {
     if (this.getExistingBooks()) {
       this.getExistingBooks().forEach((book) => {
