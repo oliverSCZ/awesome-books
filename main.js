@@ -1,7 +1,6 @@
 const form = document.querySelector('.form');
 const titleInput = document.querySelector('#input-title');
 const authorInput = document.querySelector('#input-author');
-
 class Book { 
   constructor(title = null, author = null) {
     this.title = title;
@@ -16,6 +15,7 @@ class Book {
   saveToLocalStorage = (books) => {
     localStorage.setItem('books', JSON.stringify(books));
   };
+
   addBooks() {
     const newBook = {
       title: this.title,
@@ -32,6 +32,7 @@ class Book {
     this.saveToLocalStorage(this.books);
     this.books = [];
   }
+
   removeBook(bookId) {
     const filterBooks = this.getExistingBooks().filter(
       (existingBook) => existingBook.id !== bookId,
@@ -40,6 +41,7 @@ class Book {
     this.saveToLocalStorage(filterBooks);
     window.location.reload();
   }
+  
   displayBooks() {
     if (this.getExistingBooks()) {
       this.getExistingBooks().forEach((book) => {
