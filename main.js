@@ -1,7 +1,6 @@
 const form = document.querySelector('.form');
 const titleInput = document.querySelector('#input-title');
 const authorInput = document.querySelector('#input-author');
-
 class Book {
   constructor(title = null, author = null) {
     this.title = title;
@@ -30,9 +29,7 @@ class Book {
         this.books.push(existingBook);
       });
     }
-
     this.books.push(newBook);
-
     this.saveToLocalStorage(this.books);
     this.books = [];
   }
@@ -66,7 +63,6 @@ class Book {
 const book = new Book();
 
 book.displayBooks();
-
 form.addEventListener('submit', (e) => {
   if (titleInput.value !== '' && authorInput.value !== '') {
     const book = new Book(titleInput.value, authorInput.value);
@@ -78,8 +74,6 @@ form.addEventListener('submit', (e) => {
     alert('You need to provide valid input for book title and author.');
   }
 });
-
-// traverse through the remove buttons and add onclick event listeners
 Array.from(document.querySelectorAll('.remove-btn')).forEach((btn) => btn.addEventListener('click', () => {
   book.removeBook(btn.dataset.id);
 }));
