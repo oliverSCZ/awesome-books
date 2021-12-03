@@ -1,10 +1,11 @@
 * {
-   margin: 0;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Comfortaa', cursive;
   color: rgb(61, 61, 61);
 }
+
 html {
   font-size: 62.5%;
 }
@@ -26,6 +27,7 @@ html {
   margin-top: 1rem;
   border: 2px solid black;
 }
+
 .logo {
   display: flex;
   gap: 1rem;
@@ -59,7 +61,6 @@ html {
   border-right: none;
 }
 
-
 .hero {
   width: 95%;
   height: 87vh;
@@ -73,7 +74,7 @@ html {
 }
 
 .books-section {
-  display: inline-flexbox;
+  display:inline;
 }
 
 .books-container {
