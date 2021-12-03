@@ -93,14 +93,6 @@ html {
   display: inline-block;
 }
 
-.invisible{
-  display: none;
-}
-
-#visible {
-  display: inline-block;
-}
-
 .books-container {
   border: 1px solid grey;
   max-height: 55vh;
