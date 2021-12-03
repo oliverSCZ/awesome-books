@@ -31,7 +31,6 @@ class Book {
     }
     this.books.push(newBook);
     this.saveToLocalStorage(this.books);
-    // this.books = [];
   }
 
   removeBook(bookId) {
@@ -74,6 +73,40 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
   }
 });
+
+const list = document.querySelector('.list-act');
+const add = document.querySelector('.add-act');
+const contact = document.querySelector('.contact-act');
+
+list.addEventListener('click', () => {
+  document.getElementById('books-section').style.display = 'block';
+  document.getElementById('form-section').style.display = 'none';
+  document.getElementById('contact-section').style.display = 'none';
+});
+
+add.addEventListener('click', () => {
+  document.getElementById('books-section').style.display = 'none';
+  document.getElementById('form-section').style.display = 'block';
+  document.getElementById('contact-section').style.display = 'none';
+});
+
+contact.addEventListener('click', () => {
+  document.getElementById('books-section').style.display = 'none';
+  document.getElementById('form-section').style.display = 'none';
+  document.getElementById('contact-section').style.display = 'block';
+});
+
+window.onload = () => {
+  document.getElementById('form-section').style.display = 'none';
+  document.getElementById('contact-section').style.display = 'none';
+  this.displayBooks();
+};
+
+const date = document.getElementById('time');
+// eslint-disable-next-line no-undef
+const DateTime = luxon.DateTime.now();
+// eslint-disable-next-line no-undef
+date.innerHTML = DateTime.toLocaleString(luxon.DateTime.DATETIME_MED);
 
 // traverse through the remove buttons and add onclick event listeners
 Array.from(document.querySelectorAll('.remove-btn')).forEach((btn) => btn.addEventListener('click', () => {
