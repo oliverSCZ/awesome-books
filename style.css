@@ -61,6 +61,15 @@ html {
   border-right: none;
 }
 
+#time {
+  position: fixed;
+  top: 12%;
+  right: 4%;
+  font-size: 24px;
+  font-family: 'Comfortaa', cursive;
+  color: rgb(61, 61, 61);
+}
+
 .hero {
   width: 95%;
   padding-top: 3rem;
@@ -73,7 +82,23 @@ html {
 }
 
 .books-section {
-  display: inline;
+  display: inline-block;
+}
+
+.contact-section {
+  display: inline-block;
+}
+
+.form-section {
+  display: inline-block;
+}
+
+.invisible{
+  display: none;
+}
+
+#visible {
+  display: inline-block;
 }
 
 .books-container {
@@ -156,6 +181,7 @@ input[type='text'] {
   align-items: center;
   justify-content: space-around;
   bottom: 0;
+  position: fixed;
 }
 
 .footer-item {
