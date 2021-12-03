@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=Ubuntu:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=Ubuntu:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="style.css" />
     <script defer src="./main.js"></script>
     <title>Awesome Library</title>
@@ -21,19 +22,21 @@
         </div>
         <nav class="main-nav">
           <ul class="nav-list">
-            <li class="nav-item">List</li>
-            <li class="nav-item">Add new</li>
-            <li class="nav-item">Contact</li>
+            <li class="nav-item list-act">List</li>
+            <li class="nav-item add-act">Add new</li>
+            <li class="nav-item contact-act">Contact</li>
           </ul>
         </nav>
+       
       </header>
+      <div id="time"></div>
       <main class="hero">
-        <section class="books-section">
+        <section class="books-section" id="books-section" >
           <h1 class="title-section">The Most Awesome Books</h1>
           <div class="books-container"></div>
           <!-- Books are loaded dynamically with JavaScript -->
         </section>
-        <section class="form-section">
+        <section class="form-section" id="form-section">
           <h2 class="title-section">Add a new book</h2>
           <form class="form">
             <input
@@ -53,7 +56,7 @@
             <button type="submit" id="add-book-btn">Add</button>
           </form>
         </section>
-        <section class="contact-section">
+        <section class="contact-section" id="contact-section">
           <h2 class="title-section">Contact information</h2>
           <p class="contact-text">
             Do you have any questions or just want to say "Hello"?<br />You can
@@ -89,5 +92,7 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/2.1.1/luxon.js"></script>
+    <script src="classes.js"></script>
   </body>
 </html>
