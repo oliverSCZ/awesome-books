@@ -6,7 +6,7 @@ class Book {
     this.title = title;
     this.author = author;
     this.books = [];
-    this.bookShelf = document.querySelector('.books-section');
+    this.bookShelf = document.querySelector('.books-container');
   }
 
   generateRandomId = () => Math.random().toString(20).substr(2, 20);
@@ -31,7 +31,7 @@ class Book {
     }
     this.books.push(newBook);
     this.saveToLocalStorage(this.books);
-    this.books = [];
+    // this.books = [];
   }
 
   removeBook(bookId) {
@@ -44,14 +44,14 @@ class Book {
   }
 
   displayBooks() {
+    this.bookShelf.innerHTML = '';
     if (this.getExistingBooks()) {
-      this.getExistingBooks().forEach((book) => {
+      this.getExistingBooks().forEach((book, index) => {
         const textHtml = `
-        <div class="book">
-        <p class="title">${book.title}</p>
-        <p class="author">${book.author}</p>
-        <button class="remove-btn" data-id=${book.id}>Remove</button>
-        <hr class="bottom-border" />
+        <div class="book ${index % 2 === 0 ? 'silver-books' : ''}">
+          <p class="book-title">${book.title}</p><span>by</span>
+          <p class="book-author">${book.author}</p>
+          <button class="remove-btn" data-id=${book.id}>Remove</button>
         </div>`;
 
         this.bookShelf.insertAdjacentHTML('afterbegin', textHtml);
@@ -63,6 +63,7 @@ class Book {
 const book = new Book();
 
 book.displayBooks();
+
 form.addEventListener('submit', (e) => {
   if (titleInput.value !== '' && authorInput.value !== '') {
     const book = new Book(titleInput.value, authorInput.value);
@@ -71,9 +72,10 @@ form.addEventListener('submit', (e) => {
     authorInput.value = '';
   } else {
     e.preventDefault();
-    alert('You need to provide valid input for book title and author.');
   }
 });
+
+// traverse through the remove buttons and add onclick event listeners
 Array.from(document.querySelectorAll('.remove-btn')).forEach((btn) => btn.addEventListener('click', () => {
   book.removeBook(btn.dataset.id);
 }));

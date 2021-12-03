@@ -16,7 +16,7 @@ In this project, we have a basic website that allows users to add/remove books f
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://oliverscz.github.io/awesome-books/)
 
 ## Authors
 

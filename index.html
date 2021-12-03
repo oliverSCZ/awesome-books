@@ -13,33 +13,81 @@
     <title>Awesome Library</title>
   </head>
   <body>
-    <header class="header">
-      <nav class="main-nav"></nav>
-    </header>
-    <main class="hero">
-      <section class="title-section">
-        <h1 class="title">Awesome books</h1>
-      </section>
-      <section class="books-section">
-        <!-- Books are loaded dynamically with JavaScript -->
-      </section>
-      <section class="form-section">
-        <form class="form">
-          <input
-            type="text"
-            class="input-fields"
-            id="input-title"
-            placeholder="Title"
-          /><br /><br />
-          <input
-            type="text"
-            class="input-fields"
-            id="input-author"
-            placeholder="Author"
-          /><br /><br />
-          <button type="submit" id="addBtn">Add</button>
-        </form>
-      </section>
-    </main>
+    <div class="wrapper">
+      <header class="header">
+        <div class="logo">
+          <ion-icon name="book-outline" class="logo-icon"></ion-icon>
+          <p class="logo-title">Awesome Books</p>
+        </div>
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li class="nav-item">List</li>
+            <li class="nav-item">Add new</li>
+            <li class="nav-item">Contact</li>
+          </ul>
+        </nav>
+      </header>
+      <main class="hero">
+        <section class="books-section">
+          <h1 class="title-section">The Most Awesome Books</h1>
+          <div class="books-container"></div>
+          <!-- Books are loaded dynamically with JavaScript -->
+        </section>
+        <section class="form-section">
+          <h2 class="title-section">Add a new book</h2>
+          <form class="form">
+            <input
+              type="text"
+              class="input-fields"
+              id="input-title"
+              placeholder="Title"
+              required
+            />
+            <input
+              type="text"
+              class="input-fields"
+              id="input-author"
+              placeholder="Author"
+              required
+            />
+            <button type="submit" id="add-book-btn">Add</button>
+          </form>
+        </section>
+        <section class="contact-section">
+          <h2 class="title-section">Contact information</h2>
+          <p class="contact-text">
+            Do you have any questions or just want to say "Hello"?<br />You can
+            reach out to us!
+          </p>
+          <ul class="contact-list">
+            <li class="contact-item">
+              Our e-mail:
+              <a class="email-link" href="mailto:mail@mail.com"
+                >mail@mail.com</a
+              >
+            </li>
+            <li class="contact-item">
+              Our phone number:
+              <a class="email-link" href="tel:+18475555555">+18475555555</a>
+            </li>
+            <li class="contact-item">
+              Our address: 3448 Willis Ave, Perry, IA 50220, United States
+            </li>
+          </ul>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="copyright footer-item">&copy; 2021</p>
+        <p class="author footer-item">by Oliver Coimbra</p>
+      </footer>
+    </div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
   </body>
 </html>
